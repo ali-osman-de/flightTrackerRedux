@@ -16,12 +16,20 @@ const fetchFlightFailure = (error) => ({
     payload: error
 });
 
-export const fetchFlights = () => {
+export const fetchFlights = (airport, flightCode) => {
     return async (dispatch) => {
         dispatch(fetchFlightRequest());
         try {
-            // const apiKey = 'fdfd4b3b1586460892b250565d5c4ce2';
-            // const apiUrl = `api.aviationstack.com/v1/flights?access_key=${apiKey}`;
+            const apiKey = 'fdfd4b3b1586460892b250565d5c4ce2';
+            let apiUrl = '';
+
+            if (airport) {
+                apiUrl = `//api.aviationstack.com/v1/flights?dep_icao=${airport}&access_key=${apiKey}`;
+            } else if (flightCode) {
+                apiUrl = `//api.aviationstack.com/v1/flights?flight_icao=${flightCode}&access_key=${apiKey}`;
+            } else {
+                throw new Error('Airport or flight code is required.');
+            }
 
             const response = await fetch(apiUrl);
             if (!response.ok) {

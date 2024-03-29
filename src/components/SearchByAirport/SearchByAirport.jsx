@@ -6,8 +6,9 @@ import {
 } from 'mdb-react-ui-kit';
 import { Input } from 'antd';
 import simpleData from '../../utils/simpleData';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchFlights } from '../../actions/fetchFlight';
 
 const { Search } = Input;
 
@@ -15,22 +16,23 @@ function SearchByAirport() {
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
     const [inputValue, setInputValue] = useState("")
-    // const flights = useSelector(state => state.flights)
-    const flights = simpleData.data
+    const flights = useSelector(state => state.flights)
+    // const flights = simpleData.data
+    // const flightError = "error"
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-
 
     const onClickSearch = () => {
         if (inputValue === "") {
             setStatus("error");
-            setLoading(false)
+            setLoading(false);
         } else {
-            setStatus("success");
+            dispatch(fetchFlights(inputValue))
+            setStatus("");
             setLoading(true);
+            navigate(`/resultPageByAirport/${inputValue}`)
         }
-    }
+    };
 
     const handleSearch = (value) => {
         onClickSearch();

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     MDBCard,
     MDBCardBody,
@@ -21,17 +21,27 @@ function SearchByAirport() {
     // const flightError = "error"
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const error = flights?.error;
+
+    useEffect(() => {
+        if (error && error === "Airport or flight code is required.") {
+            setStatus("error");
+            setLoading(false);
+        }
+    }, [error, flights]);
 
     const onClickSearch = () => {
         if (inputValue === "") {
             setStatus("error");
             setLoading(false);
         } else {
-            dispatch(fetchFlights(inputValue))
             setStatus("");
             setLoading(true);
+            dispatch(fetchFlights(inputValue))
             navigate(`/resultPageByAirport/${inputValue}`)
+
         }
+
     };
 
     const handleSearch = (value) => {
@@ -47,7 +57,7 @@ function SearchByAirport() {
     return (
         <>
             <MDBCard
-                className='cardFlight shadow-4 my-5'
+                className='cardFlight shadow-5 my-5'
                 style={{
                     height: "400px",
                     width: "500px"

@@ -13,9 +13,12 @@ import {
 import { SiFlightaware } from "react-icons/si";
 import "./NavigationBar.css"
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchFlights, setFlightDataNull } from '../../actions/fetchFlight';
 
 function NavigationBar(props) {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [openNav, setOpenNav] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
 
@@ -32,10 +35,13 @@ function NavigationBar(props) {
 
   const handleClickFlight = () => {
     onHeroChange(1);
+    navigate("/")
   };
 
   const handleClickAirline = () => {
     onHeroChange(2);
+    dispatch(setFlightDataNull());
+    navigate("/")
   };
 
   const handleClickBrand = () => {
@@ -50,7 +56,7 @@ function NavigationBar(props) {
           className='title p-1 fs-3 fw-light'
           style={{ color: "dimgray" }}
           onClick={handleClickBrand}
-
+          href='/'
         >
           <SiFlightaware style={{ width: "100", height: "50" }} />
           Flight Tracker

@@ -1,6 +1,11 @@
 const FETCH_FLIGHT_REQUEST = 'FETCH_FLIGHT_REQUEST';
 const FETCH_FLIGHT_SUCCESS = 'FETCH_FLIGHT_SUCCESS';
 const FETCH_FLIGHT_FAILURE = 'FETCH_FLIGHT_FAILURE';
+const SET_FLIGHT_DATA_NULL = "SET_FLIGHT_DATA_NULL"
+
+export const setFlightDataNull = () => ({
+    type: SET_FLIGHT_DATA_NULL
+});
 
 const fetchFlightRequest = () => ({
     type: FETCH_FLIGHT_REQUEST

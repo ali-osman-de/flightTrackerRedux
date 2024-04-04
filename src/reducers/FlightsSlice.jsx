@@ -25,6 +25,11 @@ const flightsReducer = (state = initialState, action) => {
                 loading: false,
                 error: action.payload
             };
+        case "SET_FLIGHT_DATA_NULL":
+            return {
+                ...state,
+                flightData: null
+            };
         default:
             return state;
     }

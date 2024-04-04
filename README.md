@@ -1,7 +1,9 @@
-# React + Vite + Aviation Api
+# React + Vite + Aviation Api + Ant Design + mdbootstrap
 
-This project not support directly to start. You should turn off https security (it's not recommended) on web browser because of api. Then you should download project sources and you can set up npm after that run it.
-Also my project images looks below.
+<p>This project not support directly to start. You should turn off https security (it's not recommended) on web browser because of api also turning off https access is easy in the safari browser. Then you should download project sources and you can set up npm after that run it.
+Also my project images looks below.</p>
+
+<br><br/>
 <img width="1680" alt="page1-1" src="https://github.com/ali-osman-de/flightTrackerRedux/assets/72684098/10df79b4-079b-4101-9642-529abb653b1a">
 <img width="1680" alt="page1-2" src="https://github.com/ali-osman-de/flightTrackerRedux/assets/72684098/fc230d81-a82a-4f13-94bd-cae1242e4942">
 <img width="1680" alt="page2-1" src="https://github.com/ali-osman-de/flightTrackerRedux/assets/72684098/15031bc0-8bac-46a2-8513-7556813dcc45">

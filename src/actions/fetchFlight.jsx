@@ -25,13 +25,14 @@ export const fetchFlights = (airport, flightCode) => {
     return async (dispatch) => {
         dispatch(fetchFlightRequest());
         try {
-            const apiKey = 'fdfd4b3b1586460892b250565d5c4ce2';
+            // const apiKey = 'fdfd4b3b1586460892b250565d5c4ce2';
+            const apiKey2 = "a7c997375257451b2637ec161ff72a42"
             let apiUrl = '';
 
             if (airport) {
-                apiUrl = `//api.aviationstack.com/v1/flights?dep_icao=${airport}&access_key=${apiKey}`;
+                apiUrl = `//api.aviationstack.com/v1/flights?dep_icao=${airport}&access_key=${apiKey2}`;
             } else if (flightCode) {
-                apiUrl = `//api.aviationstack.com/v1/flights?flight_icao=${flightCode}&access_key=${apiKey}`;
+                apiUrl = `//api.aviationstack.com/v1/flights?flight_icao=${flightCode}&access_key=${apiKey2}`;
             } else {
                 throw new Error('Airport or flight code is required.');
             }

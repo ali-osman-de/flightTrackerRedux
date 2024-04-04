@@ -1,13 +1,13 @@
-import { Tag } from "antd"
-import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBTable, MDBTableBody, MDBTableHead } from "mdb-react-ui-kit"
-import { useSelector } from "react-redux"
+import { Tag } from "antd";
+import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBTable, MDBTableBody, MDBTableHead } from "mdb-react-ui-kit";
+import { useSelector } from "react-redux";
 import { FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
 
 
 function ResultComponent() {
-    const flights = useSelector(state => state.flights)
-    const flightData = flights?.flights?.data
-    console.log(flightData)
+    const flights = useSelector(state => state.flights);
+    const flightData = flights?.flights?.data;
+    console.log(flightData);
 
     function getHourMinuteFromDate(dateString) {
         const date = new Date(dateString);
@@ -24,7 +24,10 @@ function ResultComponent() {
                     {flightData.map((data, index) => (
                         <MDBCardBody key={index}>
                             <div>
-                                <p className="fw-light fs-7 text-muted">{data?.airline?.name}</p>
+                                <div className="d-flex justify-content-between fw-light fs-7 text-muted">
+                                    <p >{data?.airline?.name}</p>
+                                    <p >{data?.flight_date}</p>
+                                </div>
                                 <MDBCardTitle className='d-flex justify-content-between align-items-center fs-4 fw-light'>{data?.flight?.icao}
                                     <Tag className="fs-5 text-capitalize" color={"warning"}>{data?.flight_status}</Tag>
                                 </MDBCardTitle>
@@ -51,38 +54,37 @@ function ResultComponent() {
                                 </div>
                             </div>
 
-                            <MDBCardText className="my-5">
-                                <MDBTable className="fs-6" borderless>
-                                    <MDBTableHead>
-                                        <tr>
-                                            <th scope='col'></th>
-                                            <th scope='col'>Airport</th>
-                                            <th scope='col'>Gate</th>
-                                            <th scope='col'>Terminal</th>
-                                            <th scope='col'>Estimated</th>
-                                            <th scope='col'>Actual</th>
-                                        </tr>
-                                    </MDBTableHead>
-                                    <MDBTableBody>
-                                        <tr>
-                                            <th scope='row'>Departure</th>
-                                            <td>{data?.departure.airport}</td>
-                                            <td>{data?.departure.gate}</td>
-                                            <td>{data?.departure.terminal}-</td>
-                                            <td>{getHourMinuteFromDate(data?.departure?.estimated)}</td>
-                                            <td>{getHourMinuteFromDate(data?.departure?.actual)}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope='row'>Arrival</th>
-                                            <td>{data?.arrival.airport}</td>
-                                            <td>{data?.arrival.gate}-</td>
-                                            <td>{data?.arrival.terminal}</td>
-                                            <td>{getHourMinuteFromDate(data?.arrival?.estimated)}</td>
-                                            <td>{getHourMinuteFromDate(data?.arrival?.actual)}</td>
-                                        </tr>
-                                    </MDBTableBody>
-                                </MDBTable>
-                            </MDBCardText>
+                            <MDBTable className="fs-6" borderless>
+                                <MDBTableHead>
+                                    <tr className="text-center">
+                                        <th scope='col'></th>
+                                        <th scope='col'>Airport</th>
+                                        <th scope='col'>Gate</th>
+                                        <th scope='col'>Terminal</th>
+                                        <th scope='col'>Estimated</th>
+                                        <th scope='col'>Actual</th>
+                                    </tr>
+                                </MDBTableHead>
+                                <MDBTableBody>
+                                    <tr className="text-center">
+                                        <th className="text-start" scope='row'>Departure</th>
+                                        <td>{data?.departure.airport}</td>
+                                        <td>{data?.departure.gate}</td>
+                                        <td>{data?.departure.terminal}-</td>
+                                        <td>{getHourMinuteFromDate(data?.departure?.estimated)}</td>
+                                        <td>{getHourMinuteFromDate(data?.departure?.actual)}</td>
+                                    </tr>
+                                    <tr className="text-center">
+                                        <th className="text-start" scope='row'>Arrival</th>
+                                        <td>{data?.arrival.airport}</td>
+                                        <td>{data?.arrival.gate}-</td>
+                                        <td>{data?.arrival.terminal}</td>
+                                        <td>{getHourMinuteFromDate(data?.arrival?.estimated)}</td>
+                                        <td>{getHourMinuteFromDate(data?.arrival?.actual)}</td>
+                                    </tr>
+                                </MDBTableBody>
+                            </MDBTable>
+                            <hr className="mt-5" />
                         </MDBCardBody>
                     ))}
                 </MDBCard>
@@ -92,7 +94,7 @@ function ResultComponent() {
                 </div>
             )}
         </>
-    )
+    );
 }
 
-export default ResultComponent
+export default ResultComponent;

@@ -25,8 +25,7 @@ export const fetchFlights = (airport, flightCode) => {
     return async (dispatch) => {
         dispatch(fetchFlightRequest());
         try {
-            // const apiKey = 'fdfd4b3b1586460892b250565d5c4ce2';
-            const apiKey2 = "a7c997375257451b2637ec161ff72a42"
+            const apiKey = 'YOUR-API-KEY';
             let apiUrl = '';
 
             if (airport) {

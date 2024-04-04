@@ -1,6 +1,6 @@
 # React + Vite + Aviation Api + Ant Design + mdbootstrap
 
-<p>This project not support directly to start. You should turn off https security (it's not recommended) on web browser because of api also turning off https access is easy in the safari browser. Then you should download project sources and you can set up npm after that run it.
+<p>This project not support directly to start. You should turn off https security (not recommended. Also some sources call cross-origin restrictions) on web browser because of api also turning off https access is easy in the safari browser. Then you should download project sources and you can set up npm after that run it.
 Also my project images looks below.</p>
 
 <br><br/>
